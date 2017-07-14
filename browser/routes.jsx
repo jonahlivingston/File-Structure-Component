@@ -6,8 +6,8 @@ import Home from "./Home"
 
 
 const Routes = () => (
-  <Router history={browserHistory}>
-    <Route path="/" component={Home}>
+  <Router history = {browserHistory}>
+    <Route path="/" component = {Home}>
     </Route>
   </Router>
 );

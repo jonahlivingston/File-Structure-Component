@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import LoginReducer from './Login/LoginReducer';
-import HomeReducer from "./Home/HomeReducer";
+import ModalReducer from './Modal/ModalReducer';
 
 const rootReducer = combineReducers({
   auth: LoginReducer,
-  home: HomeReducer,
+  fileStructure: ModalReducer,
 });
 
 export default rootReducer;

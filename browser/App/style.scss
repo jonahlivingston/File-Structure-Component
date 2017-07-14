@@ -1,3 +1,57 @@
 h1 {
   color: red;
+  margin-bottom:0px;
+}
+
+
+//modal
+
+#modal{
+  min-height: 500px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: grey;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px 10px #888888;
+}
+
+
+//consider using general class with top and bottom border
+.section{
+  border-top-style: solid;
+  border-top-color: darkgray;
+}
+
+#header{
+  @extend .section;
+  background-color: lightgrey;
+}
+
+#subheader{
+  @extend .section;
+  border-bottom-style:solid;
+  border-bottom-color:darkgray;
+}
+#files{
+  min-height:300px;
+}
+
+a{
+  text-align:left;
+}
+
+.folder{
+  height:30px;
+  background-color: orange;
+  margin-top:10px;
+}
+
+h6{
+  margin:0px;
+}
+
+.subdirectory{
+  margin-left:30px;
 }

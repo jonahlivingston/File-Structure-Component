@@ -1,0 +1,8 @@
+1. move scss files into seperate folders
+2. consider using semantic tags
+3. doing tasks in the reducer
+4. add keys for mapping
+5. move actions/reducer to correct folder
+6. when to use which quotes
+7. add id instead of using name
+8. long names
