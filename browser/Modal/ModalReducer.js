@@ -1,15 +1,23 @@
 import data from './data';
-import {TOGGLE} from "./ModalActionCreators";
+import { TOGGLE, INDEX, SELECT } from './ModalActionCreators';
 
-
-const reducer = (state = data, action) => {
-    console.log("gottoreducer",action.name)
-  switch (action.type) {
-    case TOGGLE:
-    var clonedState = JSON.parse(JSON.stringify(state))
-     return findAndMakeOpen(action.name,clonedState)
-    default:
-      return state;
+//JSON.Parse(JSON.stringify) is an efficient way to deeply clone object
+const reducer = (state = {files:data,selected:null}, action) => {
+    switch (action.type) {
+        case SELECT:
+            state.selected = action.index;
+            var newState = JSON.parse(JSON.stringify(state));
+            return newState;
+        case TOGGLE:
+            state.files = action.postToggleState;
+            var newState = JSON.parse(JSON.stringify(state));
+            return newState;
+        case INDEX:
+            state.files = action.postIndexState;
+            var newState = JSON.parse(JSON.stringify(state));
+            return newState;
+        default:
+            return state;
   }
 };
 
@@ -17,20 +25,5 @@ export default reducer;
 
 
 
-function findAndMakeOpen(name,state){
-    var arrToSearch = [state];
-    while(arrToSearch.length){
-        var examined = arrToSearch.shift();
-        if (examined.name===name){
-            examined.open = !examined.open;
-            return state
-        }
-        else{
-            if (examined.children){
-                examined.children.forEach((file) => {
-                arrToSearch.push(file);
-            });
-        }
-        }
-    };
-}
+
+

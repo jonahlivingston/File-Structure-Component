@@ -4,7 +4,7 @@ import ModalReducer from './Modal/ModalReducer';
 
 const rootReducer = combineReducers({
   auth: LoginReducer,
-  fileStructure: ModalReducer,
+  modal: ModalReducer,
 });
 
 export default rootReducer;
