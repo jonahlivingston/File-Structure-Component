@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Folder from '../Folder';
 import File from '../File';
 import { toggleFolder, indexFiles, select } from './ModalActionCreators';
-import { deepRender } from '../utils'
 
 export class Modal extends React.Component{
     constructor(props){
@@ -14,8 +13,7 @@ export class Modal extends React.Component{
         this.props.indexFiles(this.props.fileStructure);
     }
 
-    render(){
-        const deepRender = (files) => {
+    deepRender(files){
             //if there are no files there is no need to recurse further or render anything
             if (!files) return;
             //if there are files go through them and render each open file and all of its children
@@ -34,15 +32,14 @@ export class Modal extends React.Component{
                     <div>
                         <Folder key={file.index} toggleFolder={this.props.toggleFolder} select={this.props.select} index={file.index} name={file.name} files={this.props.fileStructure} selected={this.props.selected} open={file.open}/>
                         <div className="subdirectory">
-                            {deepRender(file.children)}
+                            {this.deepRender(file.children)}
                         </div>
                     </div>
                 );
             }});   
         };
-
-        const files = deepRender(this.props.fileStructure.children);
-        
+    render(){
+        const files = this.deepRender(this.props.fileStructure.children);
         return(
             <div id="modal">
                 <div id="header">
@@ -70,16 +67,10 @@ const mapStateToProps = (state) => ({
     selected: state.modal.selected,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleFolder(index,files){
-        dispatch(toggleFolder(index,files));
-    },
-    indexFiles(files){
-        dispatch(indexFiles(files));
-    },
-    select(index){
-        dispatch(select(index));
-    },
-});
+const mapDispatchToProps = {
+    toggleFolder,
+    indexFiles,
+    select,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

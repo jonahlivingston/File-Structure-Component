@@ -1,6 +1,6 @@
 
 export const truncate = (str) => {
-    var length = Math.min(str.length, 25);
+    const length = Math.min(str.length, 25);
     if (length < str.length) {
         return str.slice(0, Math.min(str.length, 25)) + "..."
     }
@@ -8,9 +8,9 @@ export const truncate = (str) => {
 };
 
 export const breadthFirstToggle = (index,files) => {
-    var arrToSearch = [files];
+    const arrToSearch = [files];
     while(arrToSearch.length){
-        var examined = arrToSearch.shift();
+        let examined = arrToSearch.shift();
         if (examined.index===index){
             examined.open = !examined.open;
             return files
@@ -26,10 +26,10 @@ export const breadthFirstToggle = (index,files) => {
 };
 
 export const breadthFirstIndex = (state) => {
-    var index = 0; 
-    var arrToSearch = [state];
+    let index = 0; 
+    let arrToSearch = [state];
     while(arrToSearch.length){
-        var examined = arrToSearch.shift();
+        let examined = arrToSearch.shift();
         examined.index = index;
         index++
         if (examined.children){

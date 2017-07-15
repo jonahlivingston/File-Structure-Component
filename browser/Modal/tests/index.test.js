@@ -27,15 +27,3 @@ describe('<Modal/>', () => {
     });
 });
 
-// describe('<ModalContainer/>', () => {
-//     let root;
-//     let store;
-//     beforeEach('create store, shallow render Login Container', () => {
-//         store = createStore(ModalReducer,{});
-//         store.dispatch(indexFiles())
-//         root = shallow(<ModalContainer store={store} />);
-//     });
-//     it('gets props.files from state.files', () => {
-//         expect(root.find('Modal')).to.have.prop('fileStructure');
-//     });
-// });

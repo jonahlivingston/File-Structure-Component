@@ -7,16 +7,13 @@ const reducer = (state = {files:data,selected:null}, action) => {
     switch (action.type) {
         case SELECT:
             state.selected = action.index;
-            var newState = JSON.parse(JSON.stringify(state));
-            return newState;
+            return JSON.parse(JSON.stringify(state));
         case TOGGLE:
             state.files = action.postToggleState;
-            var newState = JSON.parse(JSON.stringify(state));
-            return newState;
+            return JSON.parse(JSON.stringify(state));
         case INDEX:
             state.files = action.postIndexState;
-            var newState = JSON.parse(JSON.stringify(state));
-            return newState;
+            return JSON.parse(JSON.stringify(state));
         default:
             return state;
   }
