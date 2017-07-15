@@ -9,8 +9,8 @@ If you are having any difficulties with the below please email me at jonah.livin
 2. go into respository and install dependencies (npm install)
 3. To run tests use command 'npm test'
 4. To view the program in your browser
-    a) in one terminal window enter the project directory and do 'npm build' which uses webpack to create the bundle
-    b) in a different terminal window do 'npm start'
+    a) in one terminal window enter the project directory and do 'npm run build' which uses webpack to create the bundle
+    b) in a different terminal window go into the project directory and then do 'npm start'
 
 5. Then go to [http://localhost:1337/](http://localhost:1337/) to make sure everything is working correctly.
 
