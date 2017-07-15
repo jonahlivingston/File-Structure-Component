@@ -39,7 +39,7 @@ export class Modal extends React.Component{
                     </div>
                 );
             }});   
-        }
+        };
 
         const files = deepRender(this.props.fileStructure.children);
         

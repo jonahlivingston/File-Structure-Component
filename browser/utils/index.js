@@ -5,7 +5,7 @@ export const truncate = (str) => {
         return str.slice(0, Math.min(str.length, 25)) + "..."
     }
     return str;
-}
+};
 
 export const breadthFirstToggle = (index,files) => {
     var arrToSearch = [files];
@@ -23,7 +23,7 @@ export const breadthFirstToggle = (index,files) => {
             }
         }
     };
-}
+};
 
 export const breadthFirstIndex = (state) => {
     var index = 0; 
@@ -39,4 +39,4 @@ export const breadthFirstIndex = (state) => {
         }
     };
     return state;
-}
+};

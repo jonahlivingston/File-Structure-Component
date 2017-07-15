@@ -10,18 +10,18 @@ export const toggleFolder = (index,files) => {
     return({
         type: TOGGLE,
         postToggleState: postToggleState,
-    })
-}
+    });
+};
 
 export const indexFiles = (files) => {
     const postIndexState = breadthFirstIndex(files);
     return ({
         type: INDEX,
         postIndexState: postIndexState,
-    })
-}
+    });
+};
 
 export const select = (index) => ({
     type: SELECT,
     index:index,
-})
+});
