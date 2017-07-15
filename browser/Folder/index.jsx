@@ -12,7 +12,7 @@ export const Folder = (props) => {
         }}className = {`folder ${highlighted}`}>
             <div className = {open}/>
             <div className ={folderClass}/>
-            <h6>{truncate(props.name)}</h6>
+            <h6 className="folderfile-text">{truncate(props.name)}</h6>
         </div>
     )
 }
