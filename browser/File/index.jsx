@@ -1,17 +1,10 @@
-import React from "react";
+import React from 'react';
+import {truncate} from '../utils';
 
 export const File = (props) => {
-    console.log("file",props.selected,props.index)
-const highlighted = props.selected===props.index&&"highlighted";
-const truncate = (str) => {
-    var length = Math.min(str.length,25)
-    if (length<str.length){
-        return str.slice(0,Math.min(str.length,25)) + "..."
-    }
-    return str 
-}
+    const highlighted = props.selected === props.index && "highlighted";
     return(
-        <div onClick={()=>{props.select(props.index)}}className={`file ${highlighted}`}>
+        <div onClick={()=>{props.select(props.index)}} className = {`file ${highlighted}`}>
         <div className = "file-icon"/>
         <h6>{truncate(props.name)}</h6>
         </div>

@@ -1,7 +1,8 @@
 import data from './data';
 import { TOGGLE, INDEX, SELECT } from './ModalActionCreators';
 
-//JSON.Parse(JSON.stringify) is an efficient way to deeply clone object
+//JSON.Parse(JSON.stringify) is an efficient way to deeply clone objects
+//see my notes in email for alternate faster approaches if optimization is later needed
 const reducer = (state = {files:data,selected:null}, action) => {
     switch (action.type) {
         case SELECT:
