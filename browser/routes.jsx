@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import App from './App';
+// import App from './App';
 import Home from './Home';
 import store from './Store';
-
+import '../public/style.scss';
 
 
 const Routes = () => (
