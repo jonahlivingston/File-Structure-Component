@@ -1,19 +1,22 @@
 import data from './data';
 import { TOGGLE, INDEX, SELECT } from './ModalActionCreators';
+import { breadthFirstToggle, breadthFirstIndex } from '../utils';
+
 
 //JSON.Parse(JSON.stringify) is an efficient way to deeply clone objects
 //see my notes in email for alternate faster approaches if optimization is later needed
 const reducer = (state = {files:data,selected:null}, action) => {
+    const newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case SELECT:
-            state.selected = action.index;
-            return JSON.parse(JSON.stringify(state));
+            newState.selected = action.index;
+            return newState;
         case TOGGLE:
-            state.files = action.postToggleState;
-            return JSON.parse(JSON.stringify(state));
+            newState.files = breadthFirstToggle(action.index,newState.files);
+            return newState;
         case INDEX:
-            state.files = action.postIndexState;
-            return JSON.parse(JSON.stringify(state));
+            newState.files = breadthFirstIndex(newState.files);
+            return newState;
         default:
             return state;
   }

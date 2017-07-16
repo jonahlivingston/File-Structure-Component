@@ -4,13 +4,13 @@ import { TOGGLE, toggleFolder, INDEX, indexFiles, SELECT, select   } from '../Mo
 describe('Modal Action Creators', () => {
 
     describe('toggleFolder', () => {
-        it('returns an object with type TOGGLE and a files object with indexed file toggled', () => {
-            const exampleFiles = {children:[{index:1,open:false},{index:2, open: true, children:[{index:3}]}]};
+        it('returns an object with type TOGGLE and the passed in index', () => {
+            
             const result = {
                 type: TOGGLE,
-                postToggleState: {children:[{index:1,open:true},{index:2, open: true, children:[{index:3}]}]},
+                index: 1
             };
-            expect(toggleFolder(1, exampleFiles)).to.deep.equal(result);
+            expect(toggleFolder(1)).to.deep.equal(result);
         });
     });
 
@@ -25,14 +25,11 @@ describe('Modal Action Creators', () => {
     });
     
     describe('index', () => {
-        it('returns an object with type INDEX and the object with indexes added', () => {
-            const nonIndexed = {children:[{open:false,},{open: true, children:[{}],}],};
-            const indexed = {index:0, children:[{index:1,open:false,},{index:2, open: true, children:[{index:3,}],}]};
+        it('returns an object with type INDEX', () => {
             const result = {
                 type: INDEX,
-                postIndexState: indexed
             }
-            expect(indexFiles(nonIndexed)).to.deep.equal(result);
+            expect(indexFiles()).to.deep.equal(result);
         });
     });
 });

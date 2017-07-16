@@ -8456,27 +8456,20 @@ exports.default = Home;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.select = exports.indexFiles = exports.toggleFolder = exports.SELECT = exports.INDEX = exports.TOGGLE = undefined;
-
-var _utils = __webpack_require__(47);
-
 var TOGGLE = exports.TOGGLE = 'TOGGLE';
 var INDEX = exports.INDEX = 'INDEX';
 var SELECT = exports.SELECT = 'SELECT';
 
-var toggleFolder = exports.toggleFolder = function toggleFolder(index, files) {
-    var postToggleState = (0, _utils.breadthFirstToggle)(index, files);
+var toggleFolder = exports.toggleFolder = function toggleFolder(index) {
     return {
         type: TOGGLE,
-        postToggleState: postToggleState
+        index: index
     };
 };
 
-var indexFiles = exports.indexFiles = function indexFiles(files) {
-    var postIndexState = (0, _utils.breadthFirstIndex)(files);
+var indexFiles = exports.indexFiles = function indexFiles() {
     return {
-        type: INDEX,
-        postIndexState: postIndexState
+        type: INDEX
     };
 };
 
@@ -15217,6 +15210,8 @@ var _data2 = _interopRequireDefault(_data);
 
 var _ModalActionCreators = __webpack_require__(78);
 
+var _utils = __webpack_require__(47);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //JSON.Parse(JSON.stringify) is an efficient way to deeply clone objects
@@ -15225,16 +15220,17 @@ var reducer = function reducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { files: _data2.default, selected: null };
     var action = arguments[1];
 
+    var newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case _ModalActionCreators.SELECT:
-            state.selected = action.index;
-            return JSON.parse(JSON.stringify(state));
+            newState.selected = action.index;
+            return newState;
         case _ModalActionCreators.TOGGLE:
-            state.files = action.postToggleState;
-            return JSON.parse(JSON.stringify(state));
+            newState.files = (0, _utils.breadthFirstToggle)(action.index, newState.files);
+            return newState;
         case _ModalActionCreators.INDEX:
-            state.files = action.postIndexState;
-            return JSON.parse(JSON.stringify(state));
+            newState.files = (0, _utils.breadthFirstIndex)(newState.files);
+            return newState;
         default:
             return state;
     }

@@ -1,23 +1,19 @@
-import { breadthFirstToggle } from '../utils';
-import { breadthFirstIndex } from '../utils';
+
 
 export const TOGGLE = 'TOGGLE';
 export const INDEX = 'INDEX';
 export const SELECT = 'SELECT';
 
-export const toggleFolder = (index,files) => {
-    const postToggleState = breadthFirstToggle(index,files);
+export const toggleFolder = (index) => {
     return({
         type: TOGGLE,
-        postToggleState: postToggleState,
+        index: index,
     });
 };
 
-export const indexFiles = (files) => {
-    const postIndexState = breadthFirstIndex(files);
+export const indexFiles = () => {
     return ({
         type: INDEX,
-        postIndexState: postIndexState,
     });
 };
 

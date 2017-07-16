@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 import { toggleFolder, indexFiles, select } from '../ModalActionCreators';
 import ModalReducer from '../ModalReducer';
 import data from '../data';
-import { breadthFirstToggle, index } from '../../utils';
+import { breadthFirstToggle, breadthFirstIndex } from '../../utils';
 
 describe('Modal Reducer', () => {
     let testStore;
@@ -25,8 +25,9 @@ describe('Modal Reducer', () => {
         expect(testStore.getState().selected).to.equal(3)
     });
     it('indexFiles correctly updates state', () => {
-        testStore.dispatch(indexFiles(files));
-        const result = {index:0, children:[{index:1,open:false,},{index:2, open: true, children:[{index:3,}],}]};
+        console.log("files",testStore.getState().files)
+        testStore.dispatch(indexFiles());
+        const result = breadthFirstIndex(data);
         expect(testStore.getState().files).to.deep.equal(result)
     });
 });
